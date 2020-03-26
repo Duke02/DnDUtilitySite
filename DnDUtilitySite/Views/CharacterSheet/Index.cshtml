@@ -1,0 +1,40 @@
+@model DnDUtilitySite.Models.CharacterSheet
+
+@{
+    ViewBag.Title = "DnD Util";
+    Layout = "_Layout";
+}
+<div class="container">
+    <main role="main" class="pb-3">
+        <h2 class="w-75 text-center mx-auto">@Model.Name</h2>
+        <div class="font-italic card-subtitle mx-auto w-25 text-center">
+            @Model.GetClassesAsString()
+        </div>
+        <div id="main-sheet" class="w-75 mx-auto container">
+            <div class="row">
+                <div class="col- mx-auto">
+                    <partial name="PartialViews/StatDisplay" model="@Model.BaseStrengthStat"/>
+                </div>
+                <div class="col- mx-auto">
+                    <partial name="PartialViews/StatDisplay" model="@Model.BaseConstitutionStat"/>
+                </div>
+                <div class="col- mx-auto">
+                    <partial name="PartialViews/StatDisplay" model="@Model.BaseDexterityStat"/>
+                </div>
+                <div class="col- mx-auto">
+                    <partial name="PartialViews/StatDisplay" model="@Model.BaseIntelligenceStat"/>
+                </div>
+                <div class="col- mx-auto">
+                    <partial name="PartialViews/StatDisplay" model="@Model.BaseWisdomStat"/>
+                </div>
+                <div class="col- mx-auto">
+                    <partial name="PartialViews/StatDisplay" model="@Model.BaseCharismaStat"/>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<!-- RenderSection("Scripts", required: false)-->
