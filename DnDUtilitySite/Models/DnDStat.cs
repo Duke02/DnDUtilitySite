@@ -1,8 +1,11 @@
 namespace DnDUtilitySite.Models
 {
+    /// <summary>
+    /// Mutable stats for players.
+    /// </summary>
     public struct DnDStat
     {
-        public string StatName { get; set; }
+        public StatTypes Stat { get; set; }
         public int BaseStat { get; set; }
 
         public int ModifierStat
@@ -49,5 +52,18 @@ namespace DnDUtilitySite.Models
         }
 
         public string ModifierDisplay => DnDUtility.DisplayModifier(ModifierStat);
+    }
+
+    /// <summary>
+    /// Enumeration of available stat types.
+    /// </summary>
+    public enum StatTypes
+    {
+        Strength,
+        Constitution,
+        Dexterity,
+        Intelligence,
+        Wisdom,
+        Charisma
     }
 }

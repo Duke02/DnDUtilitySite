@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "DnD Util";
     Layout = "_Layout";
+    ViewData["proficiencyBonus"] = Model.ProficiencyBonus;
 }
 <div class="container">
     <main role="main" class="pb-3">
@@ -11,7 +12,10 @@
             @Model.GetClassesAsString()
         </div>
         <div id="main-sheet" class="w-75 mx-auto container">
-            <div class="row">
+            <div class="row" id="ability-scores-heading">
+                <h3 class="col-4 mx-auto text-center">Ability Scores</h3>
+            </div>
+            <div class="row" id="ability-scores-display">
                 <div class="col- mx-auto">
                     <partial name="PartialViews/StatDisplay" model="@Model.BaseStrengthStat"/>
                 </div>
@@ -31,10 +35,29 @@
                     <partial name="PartialViews/StatDisplay" model="@Model.BaseCharismaStat"/>
                 </div>
             </div>
+
+            <div class="row container mx-auto w-75">
+                <div class="row">
+                    <h3 class="col- mx-auto text-center">Saving Throws</h3>
+                    <span class="col-auto"></span>
+                    <h3 class="col- mx-auto text-center">Skills</h3>
+                </div>
+                <div class="row">
+                    <div id="saving-throws-display" class="col- container">
+                        @foreach (var savingThrow in Model.SavingThrows)
+                        {
+                            ViewData["stat"] = Model.BaseStats.FirstOrDefault(stat => stat.Stat == savingThrow.Stat);
+                            <div class="row">
+                                <partial name="PartialViews/SavingThrowPartialView" model="savingThrow" view-data="ViewData" />
+                            </div>
+                        }
+                    </div>
+                    <div class="col"></div>
+                    <div id="skills-display" class="col- container">
+
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 </div>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-<!-- RenderSection("Scripts", required: false)-->

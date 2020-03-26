@@ -1,0 +1,32 @@
+@model SavingThrow
+
+@{
+    var proficiencyBonus = 0;
+    if (ViewData.ContainsKey("proficiencyBonus"))
+    {
+        proficiencyBonus = (int) ViewData["proficiencyBonus"];
+    }
+
+    DnDStat playerStat;
+    if (ViewData.ContainsKey("stat"))
+    {
+        playerStat = (DnDStat) ViewData["stat"];
+    }
+    else
+    {
+        playerStat = new DnDStat();
+    }
+}
+
+<div class="container p-2 mx-0">
+    <div class="row mt-0">
+        <h4 class="text-center col-">@Model.Name</h4>
+        <span class="text-center col- p-1">
+            @if (Model.IsProficient)
+            {
+                <span class="dot" style="width: 10px; height: 10px"></span>
+            }
+        </span>
+        <span class="text-center col">@Model.GetModifier(playerStat, proficiencyBonus)</span>
+    </div>
+</div>

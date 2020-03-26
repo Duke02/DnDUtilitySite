@@ -16,6 +16,19 @@ namespace DnDUtilitySite.Models
         public DnDStat BaseWisdomStat { get; set; }
         public DnDStat BaseCharismaStat { get; set; }
 
+        public List<DnDStat> BaseStats => new List<DnDStat>()
+        {
+            BaseStrengthStat, BaseCharismaStat, BaseConstitutionStat, BaseDexterityStat, BaseIntelligenceStat,
+            BaseWisdomStat
+        };
+
+
+        public List<SavingThrow> SavingThrows { get; set; }
+
+        public List<Skill> SkillProficiencies { get; set; }
+
+        public int ProficiencyBonus { get; set; }
+
         public string GetClassesAsString()
         {
             return string.Join("\n",

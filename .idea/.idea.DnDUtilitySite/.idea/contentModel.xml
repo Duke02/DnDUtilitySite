@@ -15,6 +15,8 @@
           <e p="DnDStat.cs" t="Include" />
           <e p="DnDUtility.cs" t="Include" />
           <e p="ErrorViewModel.cs" t="Include" />
+          <e p="SavingThrow.cs" t="Include" />
+          <e p="Skill.cs" t="Include" />
         </e>
         <e p="Pages" t="Include" />
         <e p="Program.cs" t="Include" />
@@ -26,6 +28,7 @@
           <e p="CharacterSheet" t="Include">
             <e p="Index.cshtml" t="Include" />
             <e p="PartialViews" t="Include">
+              <e p="SavingThrowPartialView.cshtml" t="Include" />
               <e p="StatDisplay.cshtml" t="Include" />
             </e>
           </e>
