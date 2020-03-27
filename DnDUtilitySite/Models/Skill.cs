@@ -39,6 +39,7 @@ namespace DnDUtilitySite.Models
                 case SkillTypes.Deception:
                 case SkillTypes.Intimidation:
                 case SkillTypes.Persuasion:
+                case SkillTypes.Performance:
                     return StatTypes.Charisma;
 
                 default:
@@ -61,6 +62,7 @@ namespace DnDUtilitySite.Models
         Medicine,
         Nature,
         Perception,
+        Performance,
         Persuasion,
         Religion,
         SleightOfHand,

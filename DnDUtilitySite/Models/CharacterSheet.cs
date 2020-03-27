@@ -25,7 +25,7 @@ namespace DnDUtilitySite.Models
 
         public List<SavingThrow> SavingThrows { get; set; }
 
-        public List<Skill> SkillProficiencies { get; set; }
+        public List<PlayerSkill> Skills { get; set; }
 
         public int ProficiencyBonus { get; set; }
 

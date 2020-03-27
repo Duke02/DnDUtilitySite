@@ -20,10 +20,10 @@
                     <partial name="PartialViews/StatDisplay" model="@Model.BaseStrengthStat"/>
                 </div>
                 <div class="col- mx-auto">
-                    <partial name="PartialViews/StatDisplay" model="@Model.BaseConstitutionStat"/>
+                    <partial name="PartialViews/StatDisplay" model="@Model.BaseDexterityStat"/>
                 </div>
                 <div class="col- mx-auto">
-                    <partial name="PartialViews/StatDisplay" model="@Model.BaseDexterityStat"/>
+                    <partial name="PartialViews/StatDisplay" model="@Model.BaseConstitutionStat"/>
                 </div>
                 <div class="col- mx-auto">
                     <partial name="PartialViews/StatDisplay" model="@Model.BaseIntelligenceStat"/>
@@ -36,25 +36,32 @@
                 </div>
             </div>
 
-            <div class="row container mx-auto w-75">
-                <div class="row">
-                    <h3 class="col- mx-auto text-center">Saving Throws</h3>
-                    <span class="col-auto"></span>
-                    <h3 class="col- mx-auto text-center">Skills</h3>
-                </div>
-                <div class="row">
-                    <div id="saving-throws-display" class="col- container">
-                        @foreach (var savingThrow in Model.SavingThrows)
-                        {
-                            ViewData["stat"] = Model.BaseStats.FirstOrDefault(stat => stat.Stat == savingThrow.Stat);
-                            <div class="row">
-                                <partial name="PartialViews/SavingThrowPartialView" model="savingThrow" view-data="ViewData" />
-                            </div>
-                        }
-                    </div>
-                    <div class="col"></div>
-                    <div id="skills-display" class="col- container">
+            <div class="row">
+                <div class="card-group w-100">
+                    <div class="card">
+                        <h3 class="card-header">Saving Throws</h3>
 
+                        <ul class="list-group list-group-flush" id="saving-throws-display">
+                            @foreach (var savingThrow in Model.SavingThrows)
+                            {
+                                ViewData["stat"] = Model.BaseStats.FirstOrDefault(stat => stat.Stat == savingThrow.Stat);
+                                <li class="list-group-item">
+                                    <partial name="PartialViews/SavingThrowPartialView" model="savingThrow" view-data="ViewData"/>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-header">Skills</h3>
+                        <ul class="list-group list-group-flush" id="skills-display">
+                            @foreach (var playerSkill in Model.Skills)
+                            {
+                                ViewData["stat"] = Model.BaseStats.FirstOrDefault(stat => stat.Stat == playerSkill.ApplicableStat);
+                                <li class="list-group-item">
+                                    <partial name="PartialViews/SkillPartialView" model="playerSkill" view-data="ViewData"/>
+                                </li>
+                            }
+                        </ul>
                     </div>
                 </div>
             </div>

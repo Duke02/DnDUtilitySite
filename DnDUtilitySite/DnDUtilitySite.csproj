@@ -16,4 +16,9 @@
       <Folder Include="Pages" />
     </ItemGroup>
 
+
+    <ItemGroup>
+      <Compile Remove="Models\ProficiencyStatBase.cs" />
+    </ItemGroup>
+
 </Project>
